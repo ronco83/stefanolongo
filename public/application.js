@@ -18,3 +18,31 @@ angular.element(document).ready(function() {
 	//Then init the app
 	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
+
+
+angular.module(ApplicationConfiguration.applicationModuleName).controller('LanguageController' , function($scope){
+	$scope.language = 'it';
+	this.langSwitch = function(value){
+		$scope.language = value;
+	};
+	this.openMenu = false;
+	this.toggleMenu = function(){
+		this.openMenu = !this.openMenu;
+	}
+});
+
+angular.module(ApplicationConfiguration.applicationModuleName).directive('multiLanguage' , function(){
+	return {
+		restrict: 'A',
+		link: function(scope, elem , attrs , ctrl){
+			scope.$watch('language' , function(){
+				if(attrs.multiLanguage == scope.language){
+					elem.fadeIn()
+				}
+				else {
+					elem.hide();
+				}
+			})
+		}
+	}
+});
