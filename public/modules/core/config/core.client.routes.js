@@ -10,7 +10,24 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		$stateProvider.
 		state('home', {
 			url: '/',
-			templateUrl: 'modules/core/views/home.client.view.html'
+			views: {
+				"top": { templateUrl: "modules/core/views/hp-top-bar.html" },
+				"": { templateUrl: 'modules/core/views/home.client.view.html'}
+			}
+		}).
+		state('about', {
+			url: '/about-me',
+			views: {
+				"top": { templateUrl: "modules/core/views/top-bar.html" },
+				"": { templateUrl: 'modules/core/views/about.client.view.html'}
+			}
+			}).
+		state('contacts', {
+			url: '/contacts',
+			views: {
+				"top": { templateUrl: "modules/core/views/top-bar.html" },
+				"": { templateUrl: 'modules/core/views/contacts.client.view.html'}
+			}
 		});
 	}
 ]);
