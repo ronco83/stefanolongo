@@ -39,61 +39,30 @@
 
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
-<body ng-controller="LanguageController as lngCtrl" class="ng-cloak">
-<div general-menu id="menu" ng-if="lngCtrl.openMenu == true">
-	<ul class="container">
-		<li>
-			<h2>
-				<a ng-click="lngCtrl.toggleMenu()" ng-href="/#!/about-me">
-					<span multi-language="it">Profilo</span>
-					<span multi-language="en">About me</span>
-				</a>
-			</h2>
-		</li>
-		<li>
-			<h2>
-				<a ng-href="/#!/works" ng-click="lngCtrl.toggleMenu()">
-					<span multi-language="it">Progetti</span>
-					<span multi-language="en">Works</span>
-				</a>
-			</h2>
-		</li>
-		<li>
-			<h2>
-				<a ng-click="lngCtrl.toggleMenu()" ng-href="/#!/contacts">
-					<span multi-language="it">Contatti</span>
-					<span multi-language="en">Contacts</span>
-				</a>
-			</h2>
-		</li>
-		<li>
-			<div class="full-width languageSwitch inMenu">
-				<span ng-click="lngCtrl.langSwitch('en')">EN</span>
-				<span ng-click="lngCtrl.langSwitch('it')">IT</span>
-			</div>
-		</li>
-	</ul>
-</div>
-<div ui-view="top"></div>
-<background></background>
-<section id="content" class="content" content ui-view ng-animate="'view'">
-	{% block content %}{% endblock %}
-</section>
 
-<!--Embedding The User Object-->
-<script type="text/javascript">
-	var user = {{ user | json | safe }};
-</script>
+<body class="ng-cloak">
+	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+	<section class="content">
+		<section class="container">
+			{% block content %}{% endblock %}
+		</section>
+	</section>
 
-<!--Application JavaScript Files-->
-{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+	<!--Embedding The User Object-->
+	<script type="text/javascript">
+		var user = {{ user | json | safe }};
+	</script>
 
-{% if process.env.NODE_ENV === 'development' %}
-<!--Livereload script rendered -->
-<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
-{% endif %}
+	<!--Application JavaScript Files-->
+	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+
+	{% if process.env.NODE_ENV === 'development' %}
+	<!--Livereload script rendered -->
+	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
+	{% endif %}
 </body>
+
 </html>
