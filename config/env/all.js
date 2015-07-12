@@ -18,6 +18,7 @@ module.exports = {
 				'public/css/style/stylesheets/screen.css'
 			],
 			js: [
+				'public/js/jquery-1.11.3.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
