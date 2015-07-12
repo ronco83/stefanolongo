@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/portfolio-dev',
+	db: 'mongodb://ronco83:Nerone1883!@ds059692.mongolab.com:59692/myportfolio',
 	app: {
 		title: 'portfolio - Development Environment'
 	},
