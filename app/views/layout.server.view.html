@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 	<title>{{title}}</title>
@@ -31,6 +31,11 @@
 	<meta name="twitter:url" content="{{url}}">
 	<meta name="twitter:image" content="/img/brand/logo.png">
 
+	<!--google fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Anonymous+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
@@ -39,31 +44,61 @@
 
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
+<body ng-controller="LanguageController as lngCtrl" class="ng-cloak">
+<div general-menu id="menu" ng-if="lngCtrl.openMenu == true">
+	<ul class="container">
+		<li>
+			<h2>
+				<a ng-click="lngCtrl.toggleMenu()" ng-href="/#!/about-me">
+					<span multi-language="it">Profilo</span>
+					<span multi-language="en">About me</span>
+				</a>
+			</h2>
+		</li>
+		<li>
+			<h2>
+				<a ng-href="/#!/works" ng-click="lngCtrl.toggleMenu()">
+					<span multi-language="it">Progetti</span>
+					<span multi-language="en">Works</span>
+				</a>
+			</h2>
+		</li>
+		<li>
+			<h2>
+				<a ng-click="lngCtrl.toggleMenu()" ng-href="/#!/contacts">
+					<span multi-language="it">Contatti</span>
+					<span multi-language="en">Contacts</span>
+				</a>
+			</h2>
+		</li>
+		<li>
+			<div class="full-width languageSwitch inMenu">
+				<span ng-click="lngCtrl.langSwitch('en')">EN</span>
+				<span ng-click="lngCtrl.langSwitch('it')">IT</span>
+			</div>
+		</li>
+	</ul>
+</div>
+<div ui-view="top"></div>
+<background></background>
+<section id="content" class="content" content ui-view ng-animate="'view'">
+	{% block content %}{% endblock %}
+</section>
 
-<body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		TEST
-		<section class="container">
-			{% block content %}{% endblock %}
-		</section>
-	</section>
+<!--Embedding The User Object-->
+<script type="text/javascript">
+	var user = {{ user | json | safe }};
+</script>
 
-	<!--Embedding The User Object-->
-	<script type="text/javascript">
-		var user = {{ user | json | safe }};
-	</script>
+<!--Application JavaScript Files-->
+{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
 
-	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
-
-	{% if process.env.NODE_ENV === 'development' %}
-	<!--Livereload script rendered -->
-	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
-	{% endif %}
+{% if process.env.NODE_ENV === 'development' %}
+<!--Livereload script rendered -->
+<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
+{% endif %}
 </body>
-
 </html>
