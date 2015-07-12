@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/portfolio',
+	db: 'mongodb://ronco83:Nerone1883!@ds059692.mongolab.com:59692/myportfolio',
 	assets: {
 		lib: {
 			css: [
