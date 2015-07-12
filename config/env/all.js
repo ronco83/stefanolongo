@@ -27,10 +27,10 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/mousewheel.js',
-				'public/lib/tweenmax/TweenMax.min.js',
-				'public/lib/hammer.min.js',
-				'public/lib/jquery.bxslider.min.js'
+				'public/js/mousewheel.js',
+				'public/js/tweenmax/TweenMax.min.js',
+				'public/js/hammer.min.js',
+				'public/js/jquery.bxslider.min.js'
 			]
 		},
 		css: [

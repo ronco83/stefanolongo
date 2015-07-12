@@ -18,10 +18,10 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
-				'public/lib/mousewheel.js',
-				'public/lib/tweenmax/TweenMax.min.js',
-				'public/lib/hammer.min.js',
-				'public/lib/jquery.bxslider.min.js'
+				'public/js/mousewheel.js',
+				'public/js/tweenmax/TweenMax.min.js',
+				'public/js/hammer.min.js',
+				'public/js/jquery.bxslider.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',
